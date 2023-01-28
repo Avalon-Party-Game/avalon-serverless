@@ -1,0 +1,162 @@
+{
+  "resource_version": 55,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "default",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "name": "players",
+              "schema": "avalon"
+            },
+            "insert_permissions": [
+              {
+                "role": "player",
+                "permission": {
+                  "check": {},
+                  "set": {
+                    "role": "",
+                    "side": ""
+                  },
+                  "columns": [
+                    "connected",
+                    "playerName"
+                  ]
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "player",
+                "permission": {
+                  "columns": [
+                    "connected",
+                    "playerName",
+                    "role",
+                    "side"
+                  ],
+                  "filter": {}
+                }
+              }
+            ],
+            "update_permissions": [
+              {
+                "role": "player",
+                "permission": {
+                  "columns": [
+                    "connected",
+                    "playerName"
+                  ],
+                  "filter": {},
+                  "check": null
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "stage",
+              "schema": "avalon"
+            },
+            "select_permissions": [
+              {
+                "role": "player",
+                "permission": {
+                  "columns": [
+                    "id",
+                    "stage"
+                  ],
+                  "filter": {}
+                }
+              }
+            ],
+            "update_permissions": [
+              {
+                "role": "player",
+                "permission": {
+                  "columns": [
+                    "stage"
+                  ],
+                  "filter": {
+                    "stage": {
+                      "_in": [
+                        "WAITING",
+                        "STARTED"
+                      ]
+                    }
+                  },
+                  "check": null
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "tasks",
+              "schema": "avalon"
+            },
+            "select_permissions": [
+              {
+                "role": "player",
+                "permission": {
+                  "columns": [
+                    "created_at",
+                    "electionCandidates",
+                    "electionResult",
+                    "electionVotes",
+                    "id",
+                    "pollResult",
+                    "pollVotes",
+                    "updated_at"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "database_url": {
+              "from_env": "PG_DATABASE_URL"
+            },
+            "isolation_level": "read-committed",
+            "use_prepared_statements": false
+          }
+        }
+      }
+    ],
+    "query_collections": [
+      {
+        "name": "avalon",
+        "definition": {
+          "queries": []
+        }
+      }
+    ],
+    "allowlist": [
+      {
+        "collection": "avalon",
+        "scope": {
+          "global": false,
+          "roles": [
+            "player"
+          ]
+        }
+      }
+    ],
+    "backend_configs": {
+      "dataconnector": {
+        "athena": {
+          "uri": "http://localhost:8081/api/v1/athena"
+        },
+        "snowflake": {
+          "uri": "http://localhost:8081/api/v1/snowflake"
+        }
+      }
+    }
+  }
+}
