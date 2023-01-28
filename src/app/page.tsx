@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { useRouter } from "next/navigation";
 import { usePlayers, useSessionPlayerName, useStage } from "@/state/context";
 import { Stage } from "@/lib/stage";
+import styled from "styled-components";
 
 const { Title } = Typography;
 
@@ -14,6 +15,38 @@ interface IFormValue {
     name: string;
     room: string;
 }
+
+const Warpper = styled.section`
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    left: 0;
+    top: calc(50% - 30px);
+
+    .title {
+        font-weight: 100;
+        color: white;
+        letter-spacing: 20px;
+        margin-right: -20px;
+        transform: scaleY(0.8);
+
+        &::after {
+            content: "AVALON";
+            color: white;
+            display: block;
+            filter: blur(2px) brightness(2);
+            transform: rotatex(180deg) translateY(10px);
+            mask-image: repeating-linear-gradient(
+                    transparent,
+                    transparent 3px,
+                    white 3px,
+                    white 4px
+                ),
+                linear-gradient(transparent 50%, white 90%);
+        }
+    }
+`;
 
 export default function Welcome() {
     const [form] = Form.useForm<IFormValue>();
@@ -65,28 +98,9 @@ export default function Welcome() {
                         <Input />
                     </Form.Item>
                 </Form>
-                <section
-                    style={{
-                        position: "absolute",
-                        width: "100%",
-                        textAlign: "center",
-                        overflow: "hidden",
-                        left: 0,
-                        top: "calc(50% - 30px)",
-                    }}
-                >
-                    <Title
-                        style={{
-                            fontWeight: 100,
-                            color: "#b9b9b9",
-                            letterSpacing: "20px",
-                            marginRight: "-20px",
-                            transform: "scaleY(0.8)",
-                        }}
-                    >
-                        AVALON
-                    </Title>
-                </section>
+                <Warpper>
+                    <Title className="title">AVALON</Title>
+                </Warpper>
             </Layout.Content>
             <Footer>
                 <Button

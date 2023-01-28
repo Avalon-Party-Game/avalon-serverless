@@ -47,6 +47,12 @@ export default function WaitingRoom() {
         [players]
     );
 
+    const canStartGame =
+        process.env.NODE_ENV === "development"
+            ? true
+            : players.length >= 6 && players.length <= 10;
+    // players.length >= 6 && players.length <= 10;
+
     return (
         <GameLayout>
             <Header>
@@ -57,28 +63,37 @@ export default function WaitingRoom() {
             </Layout.Content>
             <Footer>
                 <Row gutter={12}>
-                    {/* <Col span={12}>
+                    <Col span={12}>
                         <Button
-                            ghost
                             danger
+                            ghost
                             size="large"
                             block
-                            // onClick={handleKickOffline}
+                            onClick={() => {
+                                fetch("/api/end", {
+                                    method: "POST",
+                                });
+                                router.push("/");
+                            }}
                         >
-                            清除不在线玩家
+                            重置
                         </Button>
-                    </Col> */}
-                    <Col span={24}>
+                    </Col>
+                    <Col span={12}>
                         <Button
                             ghost
+                            block
                             size="large"
                             // disabled={!roomStore.canStartGame}
-                            disabled={!inGame}
+                            disabled={!(inGame && canStartGame)}
                             type="primary"
-                            style={{ width: "100%" }}
                             onClick={handleStart}
                         >
-                            {inGame ? "开始游戏" : "您还未加入"}
+                            {!canStartGame
+                                ? "人数不正确"
+                                : inGame
+                                ? "开始游戏"
+                                : "您还未加入"}
                         </Button>
                     </Col>
                 </Row>

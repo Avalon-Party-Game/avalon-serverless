@@ -67,7 +67,11 @@ export default function InGame() {
                         <Collapse.Panel header="展示/隐藏 玩家信息" key="1">
                             <Card
                                 size="small"
-                                title={`${me?.playerName} - 你扮演的角色：${me?.name}`}
+                                title={
+                                    me
+                                        ? `${me.playerName} - 你扮演的角色：${me.name}`
+                                        : "--"
+                                }
                             >
                                 <div>你视野中的人</div>
                                 <Space>
