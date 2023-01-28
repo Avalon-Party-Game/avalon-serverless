@@ -6,11 +6,14 @@ const nextConfig = {
     },
     webpack: (config) => {
         config.resolve.fallback = {
+            "utf-8-validate": false,
+            bufferutil: false,
+            canvas: false,
+            child_process: false,
             fs: false,
             net: false,
+            perf_hooks: false,
             tls: false,
-            bufferutil: false,
-            "utf-8-validate": false,
         };
         return config;
     },
