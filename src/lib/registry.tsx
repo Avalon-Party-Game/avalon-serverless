@@ -21,12 +21,6 @@ export default function StyledComponentsRegistry({
     const render = <StyleProvider cache={cache}>{children}</StyleProvider>;
 
     useServerInsertedHTML(() => {
-        const styles = styledComponentsStyleSheet.getStyleElement();
-        (styledComponentsStyleSheet.instance as any).clearTag();
-        return <>{styles}</>;
-    });
-
-    useServerInsertedHTML(() => {
         const text = extractStyle(cache);
         const domwindow = typeof window === "undefined" ? jsDom.window : window;
         const dom = new domwindow.DOMParser().parseFromString(
@@ -41,6 +35,12 @@ export default function StyledComponentsRegistry({
             )
         );
         return elements;
+    });
+
+    useServerInsertedHTML(() => {
+        const styles = styledComponentsStyleSheet.getStyleElement();
+        (styledComponentsStyleSheet.instance as any).clearTag();
+        return <>{styles}</>;
     });
 
     if (typeof window !== "undefined") return <>{children}</>;
