@@ -92,3 +92,7 @@ The frontend uses GraphQL subscription to get realtime updates from Hasura serve
     pnpm build
     pnpm start
     ```
+
+## Todo
+
+-   [ ] Internationalization - 50%

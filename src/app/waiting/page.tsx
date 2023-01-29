@@ -9,8 +9,10 @@ import { PlayerList } from "@/components/player-list";
 import { useRouter } from "next/navigation";
 import { Stage } from "@/lib/stage";
 import { usePlayers, useSessionPlayerName, useStage } from "@/state/context";
+import { useTranslation } from "react-i18next";
 
 export default function WaitingRoom() {
+    const { t } = useTranslation();
     const stage = useStage();
     const router = useRouter();
     const players = usePlayers();
@@ -51,12 +53,11 @@ export default function WaitingRoom() {
         process.env.NODE_ENV === "development"
             ? true
             : players.length >= 6 && players.length <= 10;
-    // players.length >= 6 && players.length <= 10;
 
     return (
         <GameLayout>
             <Header>
-                <div>阿瓦隆 - 等待玩家</div>
+                <div>{t("waitingTitle")}</div>
             </Header>
             <Layout.Content style={{ padding: "30px" }}>
                 <PlayerList onKickPlayer={handleKickPlayer} />
@@ -76,7 +77,7 @@ export default function WaitingRoom() {
                                 router.push("/");
                             }}
                         >
-                            重置
+                            {t("reset")}
                         </Button>
                     </Col>
                     <Col span={12}>
@@ -90,10 +91,10 @@ export default function WaitingRoom() {
                             onClick={handleStart}
                         >
                             {!canStartGame
-                                ? "人数不正确"
+                                ? t("wrongPlayerCount")
                                 : inGame
-                                ? "开始游戏"
-                                : "您还未加入"}
+                                ? t("start")
+                                : t("notJoined")}
                         </Button>
                     </Col>
                 </Row>

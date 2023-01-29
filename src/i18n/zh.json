@@ -1,0 +1,19 @@
+{
+    "en": "English",
+    "zh": "中文",
+    "colon": "：",
+    "avalon": "阿瓦隆",
+    "join": "加入游戏",
+    "status": "状态",
+    "online": "在线",
+    "offline": "离线",
+    "yourName": "你的名字",
+    "confirm": "确认吗？",
+    "exit": "退出",
+    "playerList": "玩家列表",
+    "waitingTitle": "阿瓦隆 - 等待玩家",
+    "reset": "重置",
+    "wrongPlayerCount": "人数不正确",
+    "start": "开始游戏",
+    "notJoined": "您还未加入"
+}

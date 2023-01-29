@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { usePlayers, useSessionPlayerName, useStage } from "@/state/context";
 import { Stage } from "@/lib/stage";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const { Title } = Typography;
 
@@ -16,7 +17,7 @@ interface IFormValue {
     room: string;
 }
 
-const Warpper = styled.section`
+const Warpper = styled.section<{ title: string }>`
     position: absolute;
     width: 100%;
     text-align: center;
@@ -32,7 +33,7 @@ const Warpper = styled.section`
         transform: scaleY(0.8);
 
         &::after {
-            content: "AVALON";
+            content: "${(props) => props.title}";
             color: white;
             display: block;
             filter: blur(2px) brightness(2);
@@ -74,10 +75,12 @@ export default function Welcome() {
         }
     }, [stage, players]);
 
+    const { t } = useTranslation("translation");
+
     return (
         <GameLayout>
-            <Header showLeave={false} enablePlayerList>
-                <div>阿瓦隆</div>
+            <Header showLeave={false} enablePlayerList showLanguage>
+                <div>{t("avalon")}</div>
             </Header>
             <Layout.Content style={{ position: "relative" }}>
                 <Form
@@ -86,7 +89,7 @@ export default function Welcome() {
                     style={{ padding: "30px" }}
                     onFinish={handleSubmit}
                 >
-                    <Form.Item name="name" label="你的名字" required>
+                    <Form.Item name="name" label={t("yourName")} required>
                         <Input />
                     </Form.Item>
                     <Form.Item
@@ -98,8 +101,8 @@ export default function Welcome() {
                         <Input />
                     </Form.Item>
                 </Form>
-                <Warpper>
-                    <Title className="title">AVALON</Title>
+                <Warpper title={t("avalon")}>
+                    <Title className="title">{t("avalon")}</Title>
                 </Warpper>
             </Layout.Content>
             <Footer>
@@ -110,7 +113,7 @@ export default function Welcome() {
                     type="primary"
                     onClick={form.submit}
                 >
-                    加入游戏
+                    {t("join")}
                 </Button>
             </Footer>
         </GameLayout>
