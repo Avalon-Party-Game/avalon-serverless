@@ -24,7 +24,7 @@ The frontend uses GraphQL subscription to get realtime updates from Hasura serve
 
 ## Prepare
 
-1. Create a Hasura instance, either from server or self hosted
+1. Create a Hasura instance, either from Hasura cloud or self hosted
 
 2. Install [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/install-hasura-cli/)
 
