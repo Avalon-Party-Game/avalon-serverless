@@ -12,7 +12,7 @@ export class Merlin implements Character {
     get visible() {
         return this.room.players
             .filter(({ type, side }) => side === "VILLAIN" && type !== "MODRED")
-            .map(({ playerName }) => ({ playerName, roleName: "反派" }));
+            .map(({ playerName, side }) => ({ playerName, roleName: "反派", side }));
     }
 
     toJSON = () => {

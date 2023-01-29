@@ -95,4 +95,4 @@ The frontend uses GraphQL subscription to get realtime updates from Hasura serve
 
 ## Todo
 
--   [ ] Internationalization - 50%
+-   [ ] Internationalization - Currently support Chinese/English

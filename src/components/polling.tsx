@@ -3,8 +3,10 @@ import React from "react";
 import { Button, Card, Col, message, Row } from "antd";
 import { Stage } from "@/lib/stage";
 import { useCurrentTask, useMe, useStage } from "@/state/context";
+import { useTranslation } from "react-i18next";
 
 export const Polling = () => {
+    const { t } = useTranslation();
     const stage = useStage();
     const me = useMe();
     const currentTask = useCurrentTask();
@@ -64,9 +66,9 @@ export const Polling = () => {
     // );
 
     return showPolling ? (
-        <Card title="请选择任务成功或失败" size="small">
+        <Card title={t("vote.questTitle")} size="small">
             {pendingOthers ? (
-                <div>等待其他玩家投票...</div>
+                <div>{t("vote.waiting")}</div>
             ) : (
                 <>
                     <Row gutter={12} style={{ padding: "10px 0" }}>
@@ -78,7 +80,7 @@ export const Polling = () => {
                                     danger
                                     onClick={() => handleVote(false)}
                                 >
-                                    失败
+                                    {t("failed")}
                                 </Button>
                             </Col>
                         )}
@@ -90,7 +92,7 @@ export const Polling = () => {
                                 ghost
                                 onClick={() => handleVote(true)}
                             >
-                                成功
+                                {t("success")}
                             </Button>
                         </Col>
                     </Row>

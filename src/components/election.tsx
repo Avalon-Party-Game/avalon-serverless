@@ -3,8 +3,10 @@ import React from "react";
 import { Button, Card, Col, message, Row, Space } from "antd";
 import { Stage } from "@/lib/stage";
 import { useCurrentTask, useMe, useRoom, useStage } from "@/state/context";
+import { useTranslation } from "react-i18next";
 
 export const Election = () => {
+    const { t } = useTranslation();
     const stage = useStage();
 
     const showElection = stage === Stage.ELECTION;
@@ -55,9 +57,9 @@ export const Election = () => {
     // );
 
     return showElection ? (
-        <Card title="你是否同意下列玩家执行任务？" size="small">
+        <Card title={t("vote.agreeSelectionTitle")} size="small">
             {pendingOthers ? (
-                <div>等待其他玩家投票...</div>
+                <div>{t("vote.waiting")}</div>
             ) : (
                 <>
                     <Space>
@@ -73,7 +75,7 @@ export const Election = () => {
                                 danger
                                 onClick={() => handleVote(false)}
                             >
-                                反对
+                                {t("disagree")}
                             </Button>
                         </Col>
                         <Col span={12}>
@@ -84,7 +86,7 @@ export const Election = () => {
                                 ghost
                                 onClick={() => handleVote(true)}
                             >
-                                同意
+                                {t("agree")}
                             </Button>
                         </Col>
                     </Row>

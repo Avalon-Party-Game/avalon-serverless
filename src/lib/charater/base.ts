@@ -7,6 +7,8 @@ export interface ISerializable {
 export interface Visible {
     playerName: string;
     roleName?: string;
+    type?: Character["type"];
+    side?: Character["side"];
 }
 
 export interface Character {

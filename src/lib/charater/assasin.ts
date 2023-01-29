@@ -1,4 +1,3 @@
-
 import type { Character } from "./base";
 import type { VirtualRoom } from "./utils";
 
@@ -17,9 +16,10 @@ export class Assasin implements Character {
                     type !== "OBERON" &&
                     type !== "ASSASIN"
             )
-            .map(({ playerName, name: roleName }) => ({
+            .map(({ playerName, name: roleName, type }) => ({
                 roleName,
                 playerName,
+                type,
             }));
     }
 

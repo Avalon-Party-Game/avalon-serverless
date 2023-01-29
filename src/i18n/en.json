@@ -15,5 +15,51 @@
     "reset": "Reset",
     "wrongPlayerCount": "Wrong No. Players",
     "start": "Start Game",
-    "notJoined": "You did not join"
+    "notJoined": "You did not join",
+    "agree": "Agree",
+    "disagree": "Disagree",
+    "success": "Success",
+    "failed": "Failed",
+    "ingame": {
+        "STARTED": "Started",
+        "ONGOING": "Ongoing",
+        "ELECTION": "Selection",
+        "POLLING": "Quest",
+        "playerInfo": "Player Info",
+        "yourRole": "Your Role",
+        "MERLIN": "Merlin",
+        "PERCIVAL": "Percival",
+        "MORGANA": "Morgana",
+        "ASSASIN": "Assasin",
+        "LOYAL_SERVANT": "Loyal Servant",
+        "OBERON": "Oberon",
+        "MODRED": "Modred",
+        "MINIONS": "Minions",
+        "VILLAIN": "Villain",
+        "JUSTICE": "Justice",
+        "UNKNOWN": "Unknown",
+        "visible": "You can see:"
+    },
+    "vote": {
+        "aera": "Voting Aera",
+        "empty": "No voting activity",
+        "history": "Quest History",
+        "select": "Select Players",
+        "end": "End Game",
+        "buildTeam": "Build a team that will do quest",
+        "agreeSelectionTitle": "Do you agree that the following team will do the quest?",
+        "questTitle": "Vote for the result of this quest",
+        "waiting": "Waiting other players' voting"
+    },
+    "history": {
+        "waitingElection": "Waiting for voting team",
+        "team": "Team: ",
+        "electionSuccess": "Team built",
+        "electionFailed": "Team built failed",
+        "agreeElection": "Agree this team: ",
+        "disagreeElection": "Disagree this team: ",
+        "waitingQuest": "Waiting for questing...",
+        "questResult": "Quest result: ",
+        "numFails": "{{num}} players failed it"
+    }
 }

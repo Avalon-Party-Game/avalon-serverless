@@ -1,4 +1,3 @@
-
 import type { Character } from "./base";
 import { VirtualRoom } from "./utils";
 
@@ -17,9 +16,10 @@ export class Minions implements Character {
                     type !== "OBERON" &&
                     type !== "MINIONS"
             )
-            .map(({ playerName, name: roleName }) => ({
+            .map(({ playerName, name: roleName, type }) => ({
                 playerName,
                 roleName,
+                type,
             }));
     }
 
