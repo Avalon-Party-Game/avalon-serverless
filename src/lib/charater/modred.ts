@@ -1,4 +1,3 @@
-
 import type { Character } from "./base";
 import { VirtualRoom } from "./utils";
 
@@ -15,9 +14,10 @@ export class Modred implements Character {
                 ({ type, side }) =>
                     side === "VILLAIN" && type !== "OBERON" && type !== "MODRED"
             )
-            .map(({ name: roleName, playerName }) => ({
+            .map(({ name: roleName, playerName, type }) => ({
                 playerName,
                 roleName,
+                type,
             }));
     }
 

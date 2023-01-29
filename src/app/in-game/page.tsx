@@ -12,8 +12,10 @@ import { Stage } from "@/lib/stage";
 import { useRouter } from "next/navigation";
 import { useMe, useStage } from "@/state/context";
 import { updateActivePanel, useActivePanel } from "@/state/panel";
+import { useTranslation } from "react-i18next";
 
 export default function InGame() {
+    const { t } = useTranslation();
     const router = useRouter();
     const [showElection, setShowElection] = React.useState(false);
     const stage = useStage();
@@ -41,17 +43,17 @@ export default function InGame() {
             <GameLayout>
                 <Header enablePlayerList showLeave={false}>
                     <div>
-                        <span>阿瓦隆 - </span>
+                        <span>{t("avalon")} - </span>
                         {(() => {
                             switch (stage) {
                                 case Stage.STARTED:
-                                    return "游戏开始";
+                                    return t("ingame.STARTED");
                                 case Stage.ONGOING:
-                                    return "游戏继续";
+                                    return t("ingame.ONGOING");
                                 case Stage.ELECTION:
-                                    return "投票车队";
+                                    return t("ingame.ELECTION");
                                 case Stage.POLLING:
-                                    return "投票任务";
+                                    return t("ingame.POLLING");
                             }
                         })()}
                     </div>
@@ -64,16 +66,20 @@ export default function InGame() {
                         onChange={updateActivePanel}
                         ghost
                     >
-                        <Collapse.Panel header="展示/隐藏 玩家信息" key="1">
+                        <Collapse.Panel header={t("ingame.playerInfo")} key="1">
                             <Card
                                 size="small"
                                 title={
                                     me
-                                        ? `${me.playerName} - 你扮演的角色：${me.name}`
+                                        ? `${me.playerName} - ${t(
+                                              "ingame.yourRole"
+                                          )}${t("colon")}${t(
+                                              `ingame.${me.type}`
+                                          )}`
                                         : "--"
                                 }
                             >
-                                <div>你视野中的人</div>
+                                <div>{t("ingame.visible")}</div>
                                 <Space>
                                     {me?.visible.map((player) => (
                                         <div
@@ -82,14 +88,18 @@ export default function InGame() {
                                         >
                                             <div>{player.playerName}</div>
                                             <div>
-                                                {player.roleName ?? "未知"}
+                                                {player.type
+                                                    ? t(`ingame.${player.type}`)
+                                                    : player.side
+                                                    ? t(`ingame.${player.side}`)
+                                                    : t("ingame.UNKNOWN")}
                                             </div>
                                         </div>
                                     ))}
                                 </Space>
                             </Card>
                         </Collapse.Panel>
-                        <Collapse.Panel header="投票区" key="2">
+                        <Collapse.Panel header={t("vote.aera")} key="2">
                             {(() => {
                                 switch (stage) {
                                     case Stage.ELECTION:
@@ -99,13 +109,13 @@ export default function InGame() {
                                     default:
                                         return (
                                             <Card size="small">
-                                                没有投票项目
+                                                {t("vote.empty")}
                                             </Card>
                                         );
                                 }
                             })()}
                         </Collapse.Panel>
-                        <Collapse.Panel header="历史记录" key="3">
+                        <Collapse.Panel header={t("vote.history")} key="3">
                             <TaskHistory />
                         </Collapse.Panel>
                     </Collapse>
@@ -124,7 +134,7 @@ export default function InGame() {
                                 }
                                 onClick={() => setShowElection(true)}
                             >
-                                选择人员
+                                {t("vote.select")}
                             </Button>
                         </Col>
                         <Col span={12}>
@@ -135,7 +145,7 @@ export default function InGame() {
                                 danger
                                 onClick={handleEndGame}
                             >
-                                结束游戏
+                                {t("vote.end")}
                             </Button>
                         </Col>
                     </Row>

@@ -2,6 +2,7 @@
 import React from "react";
 import { Checkbox, Col, Form, message, Modal, Row } from "antd";
 import { useRoom } from "@/state/context";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
     visible: boolean;
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 export const StartNewElection = (props: IProps) => {
+    const {t} = useTranslation()
     const [form] = Form.useForm<{ players: string[] }>();
     const room = useRoom();
 
@@ -25,7 +27,7 @@ export const StartNewElection = (props: IProps) => {
 
     return (
         <Modal
-            title="选择执行任务的人"
+            title={t('vote.buildTeam')}
             open={props.visible}
             onCancel={props.onClose}
             onOk={handleSubmit}
