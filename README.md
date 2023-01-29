@@ -7,8 +7,8 @@ The frontend uses GraphQL subscription to get realtime updates from Hasura serve
 ## Screenshot
 
 <img src="screenshot-login.jpeg" width="300" />
-
-<img src="screenshot.png" width="300" />
+<img src="screenshot-ingame.jpeg" width="300" />
+<img src="screenshot-ingame-cn.jpeg" width="300" />
 
 ---
 
