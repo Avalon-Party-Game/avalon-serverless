@@ -1,0 +1,16 @@
+table:
+  name: tasks
+  schema: avalon
+select_permissions:
+  - role: player
+    permission:
+      columns:
+        - created_at
+        - electionCandidates
+        - electionResult
+        - electionVotes
+        - id
+        - pollResult
+        - pollVotes
+        - updated_at
+      filter: {}

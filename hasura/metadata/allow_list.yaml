@@ -1,0 +1,5 @@
+- collection: avalon
+  scope:
+    global: false
+    roles:
+      - player

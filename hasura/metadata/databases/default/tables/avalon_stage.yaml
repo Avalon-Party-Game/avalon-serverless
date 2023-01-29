@@ -1,0 +1,10 @@
+table:
+  name: stage
+  schema: avalon
+select_permissions:
+  - role: player
+    permission:
+      columns:
+        - id
+        - stage
+      filter: {}

@@ -1,0 +1,3 @@
+- "!include avalon_players.yaml"
+- "!include avalon_stage.yaml"
+- "!include avalon_tasks.yaml"

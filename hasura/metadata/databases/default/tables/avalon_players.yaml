@@ -1,0 +1,30 @@
+table:
+  name: players
+  schema: avalon
+insert_permissions:
+  - role: player
+    permission:
+      check: {}
+      set:
+        role: ""
+        side: ""
+      columns:
+        - connected
+        - playerName
+select_permissions:
+  - role: player
+    permission:
+      columns:
+        - connected
+        - playerName
+        - role
+        - side
+      filter: {}
+update_permissions:
+  - role: player
+    permission:
+      columns:
+        - connected
+        - playerName
+      filter: {}
+      check: null
