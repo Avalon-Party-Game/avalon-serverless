@@ -15,8 +15,8 @@ The frontend uses GraphQL subscription to get realtime updates from Hasura serve
 ## Deployment pre-request
 
 -   Hasura
-    - [Hasura cloud](https://cloud.hasura.io/) or
-    - Self hosted with PostgreSQL Database
+    -   [Hasura cloud](https://cloud.hasura.io/) or
+    -   Self hosted with PostgreSQL Database
 -   Node.js 16+
 -   pnpm
 
@@ -51,7 +51,7 @@ The frontend uses GraphQL subscription to get realtime updates from Hasura serve
         hasura seed apply # apply initial data seed
         ```
 
-    - Ensure you have configure HASURA*GRAPHQL_UNAUTHORIZED_ROLE environment variable as \_player* in your hasura cloud dashboard or docker runtime
+    - Ensure you have configure _HASURA_GRAPHQL_UNAUTHORIZED_ROLE_ environment variable as _player_ in your hasura cloud dashboard or docker runtime
 
 4. prepare .env file under workspace root folder for nodejs usage
 
