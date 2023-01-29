@@ -4,6 +4,10 @@ const nextConfig = {
     experimental: {
         appDir: true,
     },
+    // i18n: {
+    //     locales: ["en", "zh"],
+    //     defaultLocale: "zh",
+    // },
     webpack: (config) => {
         config.resolve.fallback = {
             "utf-8-validate": false,

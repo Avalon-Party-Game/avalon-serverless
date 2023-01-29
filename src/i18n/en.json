@@ -1,0 +1,19 @@
+{
+    "en": "English",
+    "zh": "中文",
+    "colon": ": ",
+    "avalon": "AVALON",
+    "join": "Join the game",
+    "status": "Status",
+    "online": "Online",
+    "offline": "Offline",
+    "yourName": "Your Name",
+    "confirm": "Confirm?",
+    "exit": "Exit",
+    "playerList": "Player List",
+    "waitingTitle": "AVALON - Waiting Players",
+    "reset": "Reset",
+    "wrongPlayerCount": "Wrong No. Players",
+    "start": "Start Game",
+    "notJoined": "You did not join"
+}
