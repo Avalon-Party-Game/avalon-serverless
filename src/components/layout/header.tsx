@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import i18n from "@/lib/i18n";
 import Cookie from "js-cookie";
 import { useTranslation } from "react-i18next";
+import { DisconnectOutlined, WifiOutlined } from "@ant-design/icons";
 
 export const Header: React.FC<
     React.PropsWithChildren<{
@@ -64,7 +65,7 @@ export const Header: React.FC<
                     >
                         {t("status")}
                         {t("colon")}
-                        {online ? t("online") : t("offline")}
+                        {online ? <WifiOutlined /> : <DisconnectOutlined />}
                     </Col>
                     <Col span={12} style={{ textAlign: "center" }}>
                         {children}

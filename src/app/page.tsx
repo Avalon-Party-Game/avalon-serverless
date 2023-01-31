@@ -73,6 +73,16 @@ export default function Welcome() {
         ) {
             router.push("/waiting");
         }
+
+        if (
+            (stage === Stage.STARTED ||
+                stage === Stage.ONGOING ||
+                stage === Stage.ELECTION ||
+                stage === Stage.POLLING) &&
+            players.some(({ playerName }) => playerName === sessionPlayerName)
+        ) {
+            router.push("/in-game");
+        }
     }, [stage, players]);
 
     const { t } = useTranslation("translation");
